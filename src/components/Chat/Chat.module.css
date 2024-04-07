@@ -1,0 +1,39 @@
+.chat {
+  width: 1200px;
+  border: 2px solid #000;
+  border-radius: 20px;
+  margin: 80px auto 0;
+  box-sizing: border-box;
+  height: calc(100vh - 200px);
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+
+}
+
+.display {
+  flex-grow: 1;
+  border: 1px solid red;
+  margin-bottom: 20px;
+}
+
+.buttons {
+  display: flex;
+  gap: 20px;
+}
+
+.input {
+  height: 50px;
+  width: 475px;
+  border-radius: 10px;
+  border: 1px solid #000;
+  font-size: 16px;
+  padding-left: 10px;
+  box-sizing: border-box;
+  flex-grow: 1;
+}
+
+.button {
+  height: 50px;
+  font-size: 16px;
+}

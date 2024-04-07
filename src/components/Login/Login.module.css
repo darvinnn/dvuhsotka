@@ -1,0 +1,40 @@
+.login {
+  display: flex;
+  padding-top: 160px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  font-size: 36px;
+  font-weight: 500;
+}
+
+.caption {
+  font-size: 24px;
+  font-weight: 400;
+  width: 705px;
+  text-align: center;
+  margin: 80px 0;
+}
+
+.input {
+  height: 60px;
+  width: 475px;
+  border-radius: 10px;
+  border: 1px solid #000;
+  margin-right: 20px;
+  font-size: 24px;
+  padding-left: 10px;
+  box-sizing: border-box;
+}
+
+.note {
+  margin-top: 20px;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.error {
+  color: #db1a1a;
+}
