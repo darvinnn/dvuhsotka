@@ -8,13 +8,26 @@
   display: flex;
   flex-direction: column;
   padding: 30px;
+}
 
+.wrapper {
+  flex-grow: 1;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  overflow-y: hidden;
 }
 
 .display {
-  flex-grow: 1;
-  border: 1px solid red;
   margin-bottom: 20px;
+  display: block;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.display::-webkit-scrollbar {
+  display: none;
 }
 
 .buttons {

@@ -9,7 +9,8 @@ import Welcome from "./components/Welcome/Welcome";
 import Chat from "./components/Chat/Chat";
 
 function App() {
-  const [currentNav, setCurrentNav] = useState<keyof typeof NAVIGATION>(NAVIGATION.LOGIN);
+  //TODO УБРАТЬ
+  const [currentNav, setCurrentNav] = useState<keyof typeof NAVIGATION>(NAVIGATION.CHAT);
 
   console.log(currentNav);
 
