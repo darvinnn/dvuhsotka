@@ -9,17 +9,14 @@ import Welcome from "./components/Welcome/Welcome";
 import Chat from "./components/Chat/Chat";
 
 function App() {
-  //TODO УБРАТЬ
-  const [currentNav, setCurrentNav] = useState<keyof typeof NAVIGATION>(NAVIGATION.CHAT);
-
-  console.log(currentNav);
+  const [currentNav, setCurrentNav] = useState<keyof typeof NAVIGATION>(NAVIGATION.LOGIN);
 
   return (
     <main className={style.main}>
       <Logo className={style.logo} />
       {currentNav === NAVIGATION.LOGIN && <Login setCurrentNav={setCurrentNav} />}
       {currentNav === NAVIGATION.WELCOME && <Welcome setCurrentNav={setCurrentNav} />}
-      {currentNav === NAVIGATION.CHAT && <Chat setCurrentNav={setCurrentNav} />}
+      {currentNav === NAVIGATION.CHAT && <Chat />}
     </main>
   );
 }

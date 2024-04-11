@@ -1,41 +1,38 @@
-import { ChangeEvent, SyntheticEvent, useEffect, useRef, useState } from "react";
-import { NAVIGATION } from "../../constants/constants";
+import { SyntheticEvent, useEffect, useRef, useState } from "react";
+import { CHAT_OPPONENT, NOISY_MESSAGE } from "../../constants/constants";
 import Button from "../../UI/Button/Button";
 import style from "./Chat.module.css";
 import Message from "../Message/Message";
 import { IMessage } from "../../types/types";
-import Noisy from "../../assets/messageImages/Noisy.jpg";
+import { getAnswer } from "../../utils/utils";
+import Tip from "../../assets/icons/Tip.svg?react";
 
-interface Props {
-  setCurrentNav: (nav: keyof typeof NAVIGATION) => void;
-}
-
-const Chat = ({ setCurrentNav }: Props) => {
+const Chat = () => {
   const inputRef = useRef<HTMLInputElement>(null);
   const chatRef = useRef<HTMLDivElement>(null);
+  const [chatStatus, setChatStatus] = useState<keyof typeof CHAT_OPPONENT>(CHAT_OPPONENT.NOISY_GUY);
   const [input, setInput] = useState("");
-
-  const [messages, setMessages] = useState<IMessage[]>([
-    {
-      name: "Бесячий ученик",
-      text: `Здарова! Ну че там, мб скинешь мне ответы по истории? А то я и так все знаю же, в падлу вот это готовиться. Ну по-братски, скинь шпоры хотя бы`,
-      isAnswer: true,
-      avatar: Noisy,
-    },
-  ]);
+  const [messages, setMessages] = useState<IMessage[]>([]);
 
   useEffect(() => {
     chatRef.current?.scrollTo({ top: chatRef.current.scrollHeight });
   }, [messages]);
 
+  useEffect(() => {
+    setTimeout(() => setMessages([NOISY_MESSAGE]), 1500);
+  }, []);
+
   const handleSubmit = (e: SyntheticEvent) => {
     e.preventDefault();
 
+    setInput("");
+    if (chatStatus === CHAT_OPPONENT.DONE) return;
+
     if (input) {
       setMessages((prev) => [...prev, { isAnswer: false, text: input }]);
+      getAnswer({ input, chatStatus, setChatStatus, setMessages });
     }
 
-    setInput("");
     inputRef.current && inputRef.current.focus();
   };
 
@@ -46,6 +43,11 @@ const Chat = ({ setCurrentNav }: Props) => {
           {messages.map((message, i) => (
             <Message {...message} key={i} />
           ))}
+          {chatStatus === CHAT_OPPONENT.DONE && (
+            <div className={style.imgBox}>
+              <Tip />
+            </div>
+          )}
         </div>
       </div>
 
